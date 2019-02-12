@@ -50,7 +50,7 @@ stem(n,y3(n));
 
 grid;
 
-%y3n = @(n)y(n/3); %y3n Discrete
+y3n = @(n)y(n/3); %y3n Discrete
 subplot(2,2,3);
 stem(n,y3n(n));
 grid;
