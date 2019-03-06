@@ -11,7 +11,7 @@ for r = 0:N_0-1
 end
 r=n;
 X_r = fft(x(n))./N_0;
-stem(r,real(X_r),'k.');
+stem(r,abs(X_r),'k.');
 xlabel('r'); 
 ylabel('X_r');
 figure
@@ -28,12 +28,11 @@ end
 r=n;
 X_r = fft(x)./N_1;
 figure;
-stem(r,real(X_r),'k.');
+stem(r,abs(X_r),'k.');
 xlabel('r'); 
 ylabel('X_r');
 figure;
-stem(r,imag(X_r));
-
+stem(r,angle(X_r));
 
 %% Part B Inverse DTFS
 N_2 = 32;
@@ -44,7 +43,7 @@ for r = 0:N_2-1
     X_r(r+1) = sum(x.*exp(-j.*r.*Omega_0.*n))./N_2;
 end
 r=n;
-X_r = ifft(x)./N_1;
+%X_r = ifft(x)./N_1;
 figure;
 stem(r,real(X_r),'k.');
 xlabel('r'); 
@@ -57,14 +56,14 @@ N_2 = 32;
 n = (0:N_2-1);
 Omega_0 = (2.*pi)/N_2;
 x = [ones(1,5) zeros(1,23) ones(1,4)];
+Xs = x.*exp(-j.*5.*r.*Omega_0.*n);
 for r = 0:N_2-1
-    X_r(r+1) = sum(x.*exp(-j.*r.*Omega_0.*n))./N_2;
+    X_r(r+1) = sum(Xs.*exp(-j.*r.*Omega_0.*n))./N_2;
 end
 r=n;
-X = x.*exp(-j.*5.*r.*Omega_0.*n);
-X_r = ifft(X)./N_1;
+%X_r = ifft(Xs)./N_1;
 figure;
-stem(r,real(X),'k.');
+stem(r,real(X_r),'k.');
 xlabel('r'); 
 ylabel('X_r');
 figure;
