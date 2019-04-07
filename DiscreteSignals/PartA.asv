@@ -10,9 +10,9 @@ X2 = fft(x2);
 
 figure;
 subplot(2,1,1)
-stem(fr,real(X1))
+stem(fr,abs(X1))
 subplot(2,1,2)
-stem(fr, real(X2))
+stem(fr, abs(X2))
 
 %2
 clc;
@@ -28,9 +28,9 @@ X_2 = fft(x_2);
 
 figure;
 subplot(2,1,1);
-stem(fft(real(X_1)));
+stem(fft(abs(X_1)));
 subplot(2,1,2);
-stem(fft(real(X_2)));
+stem(fft(abs(X_2)));
 
 %3
 clc;
@@ -44,11 +44,27 @@ X2 = fft(x2);
 
 figure;
 subplot(2,1,1)
-stem(fr,real(X1))
+stem(fr,abs(X1))
 subplot(2,1,2)
-stem(fr, real(X2))
+stem(fr, abs(X2))
 
-%5
+%4
+N = 500;
+n = (0 : N-1);
+x1 = exp(j*2*pi*n*30/100) + exp(j*2*pi*n*33/100);
+x2 = cos(2*pi*n*30/100) + 0.5*cos(2*pi*n*40/100);
+
+x_1 = [x1,zeros(1,400)];
+X_1 = fft(x_1);
+x_2 = [x2,zeros(1,400)];
+X_2 = fft(x_2);
+
+figure;
+subplot(2,1,1);
+stem(fft(abs(X_1)));
+subplot(2,1,2);
+stem(fft(abs(X_2)));
+
 
 
 
